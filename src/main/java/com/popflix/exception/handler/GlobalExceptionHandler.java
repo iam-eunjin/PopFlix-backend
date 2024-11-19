@@ -1,4 +1,4 @@
-package com.popflix.handler;
+package com.popflix.exception.handler;
 
 import com.popflix.util.ApiUtil;
 import lombok.extern.slf4j.Slf4j;
