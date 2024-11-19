@@ -1,10 +1,18 @@
 package com.popflix.domain.user.entity;
 
 import com.popflix.common.entity.BaseTimeEntity;
+import com.popflix.domain.movie.entity.MovieLike;
+import com.popflix.domain.movie.entity.Rating;
+import com.popflix.domain.movie.entity.Recommendation;
+import com.popflix.domain.storage.entity.Storage;
+import com.popflix.domain.storage.entity.StorageLike;
 import com.popflix.domain.user.enums.AuthType;
 import com.popflix.domain.user.enums.Gender;
 import jakarta.persistence.*;
 import lombok.Getter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "User")
@@ -46,4 +54,19 @@ public class User extends BaseTimeEntity {
     @Enumerated(EnumType.STRING)
     @Column(name = "gender")
     private Gender gender;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<MovieLike> movieLikes = new ArrayList<>();
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Rating> ratings = new ArrayList<>();
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Recommendation> recommendations = new ArrayList<>();
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Storage> storages = new ArrayList<>();
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<StorageLike> storageLikes = new ArrayList<>();
 }

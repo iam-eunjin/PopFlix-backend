@@ -1,6 +1,7 @@
 package com.popflix.domain.movie.entity;
 
 
+import com.popflix.domain.user.entity.User;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
@@ -22,14 +23,16 @@ public class Rating {
     @Max(5)
     private Integer rating;
 
-    private Long user; // user entity 연결 필요
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "movie_id")
     private Movie movie;
 
     @Builder
-    public Rating(Integer rating, Long user, Movie movie) {
+    public Rating(Integer rating, User user, Movie movie) {
         this.rating = rating;
         this.user = user;
         this.movie = movie;

@@ -1,5 +1,7 @@
 package com.popflix.domain.movie.entity;
 
+import com.popflix.domain.storage.entity.Storage;
+import com.popflix.domain.user.entity.User;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -22,14 +24,16 @@ public class MovieLike {
 
     private LocalDateTime update_at;
 
-    private Long user; // user entity 연결 필요
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "movie_id")
+    @JoinColumn(name = "movie_id", nullable = false)
     private Movie movie;
 
     @Builder
-    public MovieLike(boolean is_like, LocalDateTime update_at, Long user, Movie movie) {
+    public MovieLike(boolean is_like, LocalDateTime update_at, User user, Movie movie) {
         this.is_like = is_like;
         this.update_at = update_at;
         this.user = user;

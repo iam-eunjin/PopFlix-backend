@@ -1,5 +1,6 @@
 package com.popflix.domain.movie.entity;
 
+import com.popflix.domain.user.entity.User;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -16,7 +17,9 @@ public class Recommendation {
     private Long id;
 
 
-    private Long user; // user entity 연결 필요
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "movie_id")
@@ -24,7 +27,7 @@ public class Recommendation {
 
     @Builder
 
-    public Recommendation(Long user, Movie movie) {
+    public Recommendation(User user, Movie movie) {
         this.user = user;
         this.movie = movie;
     }
