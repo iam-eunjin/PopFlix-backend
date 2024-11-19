@@ -1,11 +1,11 @@
-package com.popflix.domain.notification;
+package com.popflix.domain.notification.entity;
 
 import com.popflix.domain.common.BaseTimeEntity;
 import com.popflix.domain.movie.entity.Movie;
 import com.popflix.domain.notification.enums.NotificationType;
-import com.popflix.domain.photoreview.PhotoReview;
-import com.popflix.domain.review.Review;
-import com.popflix.domain.user.User;
+import com.popflix.domain.photoreview.entity.PhotoReview;
+import com.popflix.domain.review.entity.Review;
+import com.popflix.domain.user.entity.User;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

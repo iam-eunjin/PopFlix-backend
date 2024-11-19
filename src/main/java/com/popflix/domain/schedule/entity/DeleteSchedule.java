@@ -1,4 +1,4 @@
-package com.popflix.domain.schedule;
+package com.popflix.domain.schedule.entity;
 
 import com.popflix.domain.common.BaseTimeEntity;
 import com.popflix.domain.schedule.enums.TargetType;
