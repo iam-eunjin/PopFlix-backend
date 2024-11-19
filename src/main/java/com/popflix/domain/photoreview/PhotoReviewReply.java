@@ -1,5 +1,7 @@
 package com.popflix.domain.photoreview;
 
+import com.popflix.domain.common.BaseTimeEntity;
+import com.popflix.domain.user.User;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -8,7 +10,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class PhotoReviewReply extends BaseEntity {
+public class PhotoReviewReply extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long replyId;

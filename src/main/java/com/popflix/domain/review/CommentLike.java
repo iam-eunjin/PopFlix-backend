@@ -1,6 +1,7 @@
 package com.popflix.domain.review;
 
 import com.popflix.domain.common.BaseTimeEntity;
+import com.popflix.domain.user.User;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;

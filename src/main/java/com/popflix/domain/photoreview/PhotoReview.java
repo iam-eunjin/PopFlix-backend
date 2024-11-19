@@ -2,6 +2,7 @@ package com.popflix.domain.photoreview;
 
 import com.popflix.domain.common.BaseTimeEntity;
 import com.popflix.domain.movie.entity.Movie;
+import com.popflix.domain.user.User;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;

@@ -5,6 +5,7 @@ import com.popflix.domain.movie.entity.Movie;
 import com.popflix.domain.notification.enums.NotificationType;
 import com.popflix.domain.photoreview.PhotoReview;
 import com.popflix.domain.review.Review;
+import com.popflix.domain.user.User;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
