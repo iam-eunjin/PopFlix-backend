@@ -1,4 +1,4 @@
-package com.popflix.util;
+package com.popflix.global.util;
 
 import lombok.Getter;
 

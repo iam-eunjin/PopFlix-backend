@@ -1,9 +1,16 @@
-package com.popflix.domain.common;
+package com.popflix.global.code.entity;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "GroupCode")
@@ -19,4 +26,7 @@ public class GroupCode {
 
     @Column(name = "group_code_desc", length = 50)
     private String groupCodeDesc;
+
+    @OneToMany(mappedBy = "groupCode")
+    private List<CommonCode> commonCodes = new ArrayList<>();
 }

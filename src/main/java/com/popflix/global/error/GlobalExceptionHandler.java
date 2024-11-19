@@ -1,6 +1,6 @@
-package com.popflix.exception.handler;
+package com.popflix.global.error;
 
-import com.popflix.util.ApiUtil;
+import com.popflix.global.util.ApiUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatusCode;

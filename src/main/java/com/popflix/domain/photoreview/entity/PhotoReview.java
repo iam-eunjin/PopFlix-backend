@@ -1,6 +1,6 @@
 package com.popflix.domain.photoreview.entity;
 
-import com.popflix.domain.common.BaseTimeEntity;
+import com.popflix.common.entity.BaseTimeEntity;
 import com.popflix.domain.movie.entity.Movie;
 import com.popflix.domain.user.entity.User;
 import jakarta.persistence.*;
