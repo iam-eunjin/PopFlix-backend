@@ -1,6 +1,5 @@
 package com.popflix.domain.movie.entity;
 
-import com.popflix.domain.personality.entity.Genre;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -10,23 +9,23 @@ import lombok.NoArgsConstructor;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class MovieGenre {
+public class Recommendation {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+
+    private Long user; // user entity 연결 필요
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "movie_id")
     private Movie movie;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "genre_id")
-    private Genre genre;
-
-
     @Builder
-    public MovieGenre(Movie movie, Genre genre){
+
+    public Recommendation(Long user, Movie movie) {
+        this.user = user;
         this.movie = movie;
-        this.genre = genre;
     }
 }
