@@ -63,6 +63,9 @@
 - Review CRUD
 - Comment CRUD
 - Review, Comment '좋아요' 처리
+- PhotoReview CRUD
+- Notification
+- Report
 - Test Code 작성
 
 <br />
