@@ -1,4 +1,4 @@
-package com.popflix.global.code.entity;
+package com.popflix.common.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
