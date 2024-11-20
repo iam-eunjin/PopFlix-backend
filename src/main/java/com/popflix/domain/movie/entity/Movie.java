@@ -8,7 +8,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,6 +21,7 @@ public class Movie {
 
     private String movieName;
 
+    @Column(length = 1000)
     private String plot;
 
     private String posterPath;
