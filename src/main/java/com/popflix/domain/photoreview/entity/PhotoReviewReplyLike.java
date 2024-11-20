@@ -7,31 +7,22 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class PhotoReviewReply extends BaseTimeEntity {
+public class PhotoReviewReplyLike extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long replyId;
-
-    @Column(length = 100, nullable = false)
-    private String reply;
+    private Long replyLikeId;
 
     @Column(nullable = false)
-    private Boolean isHidden = false;
+    private Boolean replyLike = false;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "comment_id", nullable = false)
-    private PhotoReviewComment comment;
-
-    @OneToMany(mappedBy = "reply")
-    private List<PhotoReviewReplyLike> likes = new ArrayList<>();
+    @JoinColumn(name = "reply_id", nullable = false)
+    private PhotoReviewReply reply;
 }
