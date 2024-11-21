@@ -34,6 +34,13 @@ public class MovieController {
         return ApiUtil.success(message);
     }
 
+    // 영화 별점 삭제
+    @DeleteMapping("/rating")
+    public ApiSuccess<?> deleteRating(@RequestParam Long userId, @RequestParam Long movieId) {
+        String message = ratingService.deleteRating(userId, movieId);
+        return ApiUtil.success(message);
+    }
+
     // 영화 별점 조회
     @GetMapping("/{movieId}/ratings")
     public ApiSuccess<?> getMovieRatings(@PathVariable Long movieId) {

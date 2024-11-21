@@ -1,14 +1,10 @@
 package com.popflix.domain.movie.service.impl;
 
-import com.popflix.domain.movie.entity.Movie;
 import com.popflix.domain.movie.entity.Rating;
 import com.popflix.domain.movie.repository.MovieRepository;
 import com.popflix.domain.movie.repository.RatingRepository;
 import com.popflix.domain.movie.repository.UserRepository;
 import com.popflix.domain.movie.service.RatingService;
-import com.popflix.domain.user.entity.User;
-import com.popflix.global.error.MovieNotFoundException;
-import com.popflix.global.error.UserNotFoundException;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -60,4 +56,19 @@ public class RatingServiceImpl implements RatingService {
             return "새로운 팝콘이 등록되었습니다.";
         }
     }
+
+    @Override
+    @Transactional
+    public String deleteRating(Long userId, Long movieId) {
+        // 1. 사용자와 영화가 있는지 확인
+        Rating existingRating = ratingRepository.findByUserIdAndMovieId(userId, movieId)
+                .orElseThrow(() -> new IllegalArgumentException("평점이 존재하지 않습니다."));
+
+        // 2. 평점 삭제
+        existingRating.deleteRating(); // 별점 삭제 메서드 호출
+        ratingRepository.delete(existingRating); // 평점 엔티티 삭제
+
+        return "평점이 삭제되었습니다.";
+    }
+
 }
