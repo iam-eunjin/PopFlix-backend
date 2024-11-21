@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Cast extends BaseTimeEntity {
+public class Cast {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

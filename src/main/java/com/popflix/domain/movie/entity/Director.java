@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Director extends BaseTimeEntity {
+public class Director {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
