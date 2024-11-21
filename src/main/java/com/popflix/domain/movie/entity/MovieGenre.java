@@ -29,4 +29,12 @@ public class MovieGenre {
         this.movie = movie;
         this.genre = genre;
     }
+
+    // 수정된 setMovie 메서드
+    public void setMovie(Movie movie) {
+        this.movie = movie;
+        if (!movie.getMovieGenres().contains(this)) {
+            movie.getMovieGenres().add(this); // Movie에도 관계 설정
+        }
+    }
 }

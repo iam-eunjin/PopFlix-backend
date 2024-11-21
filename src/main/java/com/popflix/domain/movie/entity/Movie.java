@@ -1,11 +1,9 @@
 package com.popflix.domain.movie.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.popflix.domain.storage.entity.MovieStorage;
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -19,17 +17,22 @@ public class Movie {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String movieName;
+    private String title;
 
     @Column(length = 1000)
-    private String plot;
+    private String overview;
 
+    @JsonProperty("poster_path")
     private String posterPath;
 
+    @JsonProperty("release_date")
     private LocalDate releaseDate;
 
     @OneToMany(mappedBy = "movie", fetch = FetchType.LAZY)
-    private List<MovieActor> movieActors = new ArrayList<>();
+    private List<MovieCast> movieCasts = new ArrayList<>();
+
+    @OneToMany(mappedBy = "movie", fetch = FetchType.LAZY)
+    private List<MovieDirector> movieDirectors = new ArrayList<>();
 
     @OneToMany(mappedBy = "movie", fetch = FetchType.LAZY)
     private List<MovieStorage> movieStorages = new ArrayList<>();
@@ -50,12 +53,13 @@ public class Movie {
     private List<ReviewVideo> reviewVideos = new ArrayList<>();
 
     @Builder
-    public Movie(String movieName, String plot, String posterPath, LocalDate releaseDate, List<MovieActor> movieActors, List<MovieStorage> movieStorages, List<MovieLike> movieLikes, List<MovieGenre> movieGenres, List<Rating> ratings, List<Recommendation> recommendations, List<ReviewVideo> reviewVideos) {
-        this.movieName = movieName;
-        this.plot = plot;
+    public Movie(String title, String overview, String posterPath, LocalDate releaseDate, List<MovieCast> movieCasts, List<MovieDirector> movieDirectors, List<MovieStorage> movieStorages, List<MovieLike> movieLikes, List<MovieGenre> movieGenres, List<Rating> ratings, List<Recommendation> recommendations, List<ReviewVideo> reviewVideos) {
+        this.title = title;
+        this.overview = overview;
         this.posterPath = posterPath;
         this.releaseDate = releaseDate;
-        this.movieActors = movieActors;
+        this.movieCasts = movieCasts;
+        this.movieDirectors = movieDirectors;
         this.movieStorages = movieStorages;
         this.movieLikes = movieLikes;
         this.movieGenres = movieGenres;
@@ -63,4 +67,5 @@ public class Movie {
         this.recommendations = recommendations;
         this.reviewVideos = reviewVideos;
     }
+
 }
