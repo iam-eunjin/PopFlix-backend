@@ -27,11 +27,11 @@ public class MovieController {
         return "Movies saved successfully!";
     }
 
-    // 영화 별점 추가
+    // 영화 별점 추가 및 수정
     @PostMapping("/rating")
     public ApiSuccess<?> addRating(@RequestBody @Valid AddRatingRequestDto request) {
-        ratingService.addRating(request.getUserId(), request.getMovieId(), request.getRating());
-        return ApiUtil.success("팝콘이 정상적으로 처리되었습니다.");
+        String message = ratingService.addOrUpdateRating(request.getUserId(), request.getMovieId(), request.getRating());
+        return ApiUtil.success(message);
     }
 
     // 영화 별점 조회

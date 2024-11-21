@@ -9,8 +9,11 @@ import com.popflix.domain.movie.service.RatingService;
 import com.popflix.domain.user.entity.User;
 import com.popflix.global.error.MovieNotFoundException;
 import com.popflix.global.error.UserNotFoundException;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -21,22 +24,40 @@ public class RatingServiceImpl implements RatingService {
     private final MovieRepository movieRepository;
 
     @Override
-    public void addRating(Long userId, Long movieId, Integer score) {
+    @Transactional
+    public String addOrUpdateRating(Long userId, Long movieId, Integer score) {
         if (score < 1 || score > 5) {
-            throw new IllegalArgumentException("팝콘 지수는 1점 에서 5점 사이로 가능합니다.");
+            throw new IllegalArgumentException("팝콘 지수는 1점에서 5점 사이로 가능합니다.");
         }
 
-        User user = userRepository.findById(userId)
-                .orElseThrow(() -> new UserNotFoundException(userId));
-        Movie movie = movieRepository.findById(movieId)
-                .orElseThrow(() -> new MovieNotFoundException(movieId));
+        // 1. 영화에 평점 상태 확인
+        Optional<Rating> existingRatingOpt = ratingRepository.findByUserIdAndMovieId(userId, movieId);
 
-        Rating rating = Rating.builder()
-                .user(user)
-                .movie(movie)
-                .rating(score)
-                .build();
+        if (existingRatingOpt.isPresent()) {
+            // 2-1. 이미 평점이 있는 경우
+            Rating existingRating = existingRatingOpt.get();
 
-        ratingRepository.save(rating);
+            // 일단 같은 점수일 경우 예외 추가(선택 사항)
+            if (existingRating.getRating() == score) {
+                throw new IllegalArgumentException("같은 평점으로는 업데이트할 수 없습니다.");
+            }
+
+            existingRating.updateRating(score);
+            ratingRepository.save(existingRating);
+
+            return "팝콘이 수정되었습니다.";
+
+        } else {
+            // 2-2. 새로운 평점을 추가하는 경우
+            Rating newRating = Rating.builder()
+                    .user(userRepository.getReferenceById(userId))
+                    .movie(movieRepository.getReferenceById(movieId))
+                    .rating(score)
+                    .build();
+
+            ratingRepository.save(newRating);
+
+            return "새로운 팝콘이 등록되었습니다.";
+        }
     }
 }
