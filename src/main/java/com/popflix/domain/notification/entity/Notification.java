@@ -1,5 +1,6 @@
 package com.popflix.domain.notification.entity;
 
+import com.popflix.common.entity.BaseSoftDeleteEntity;
 import com.popflix.common.entity.BaseTimeEntity;
 import com.popflix.domain.movie.entity.Movie;
 import com.popflix.domain.notification.enums.NotificationType;
@@ -14,7 +15,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "Notification")
 @Getter
 @NoArgsConstructor
-public class Notification extends BaseTimeEntity {
+public class Notification extends BaseSoftDeleteEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long notificationId;

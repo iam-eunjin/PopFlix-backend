@@ -1,6 +1,7 @@
 package com.popflix.domain.movie.entity;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.popflix.common.entity.BaseTimeEntity;
 import com.popflix.domain.storage.entity.MovieStorage;
 import jakarta.persistence.*;
 import lombok.*;
@@ -12,7 +13,7 @@ import java.util.List;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Movie {
+public class Movie extends BaseTimeEntity {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
