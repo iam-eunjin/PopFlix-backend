@@ -44,8 +44,8 @@ public class MovieController {
     // 영화 별점 조회
     @GetMapping("/{movieId}/ratings")
     public ApiSuccess<?> getMovieRatings(@PathVariable Long movieId) {
-        GetMovieRatingResponseDto response = movieService.getMovieRatings(movieId);
-        return ApiUtil.success(response);
+        GetMovieRatingResponseDto movieRatingResponse  = movieService.getMovieRatings(movieId);
+        return ApiUtil.success(movieRatingResponse);
     }
 
 }
