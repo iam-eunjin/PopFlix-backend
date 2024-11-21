@@ -6,27 +6,20 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Actor {
+public class Cast {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String name;
-
-    @OneToMany(mappedBy = "character", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<MovieActor> movieActors = new ArrayList<>();
+    private String name;  // 출연진 이름
 
     @Builder
-    public Actor(String name, List<MovieActor> movieActors) {
+    public Cast(String name) {
         this.name = name;
-        this.movieActors = movieActors;
     }
-
 }
+
