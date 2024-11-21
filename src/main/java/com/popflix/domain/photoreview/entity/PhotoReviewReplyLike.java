@@ -1,5 +1,6 @@
 package com.popflix.domain.photoreview.entity;
 
+import com.popflix.common.entity.BaseSoftDeleteEntity;
 import com.popflix.common.entity.BaseTimeEntity;
 import com.popflix.domain.user.entity.User;
 import jakarta.persistence.*;
@@ -10,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class PhotoReviewReplyLike extends BaseTimeEntity {
+public class PhotoReviewReplyLike extends BaseSoftDeleteEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long replyLikeId;

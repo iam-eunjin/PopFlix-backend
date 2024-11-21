@@ -1,5 +1,6 @@
 package com.popflix.domain.movie.entity;
 
+import com.popflix.common.entity.BaseTimeEntity;
 import com.popflix.domain.personality.entity.Genre;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
@@ -10,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class MovieGenre {
+public class MovieGenre extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

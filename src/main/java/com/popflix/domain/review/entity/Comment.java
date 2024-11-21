@@ -1,5 +1,6 @@
 package com.popflix.domain.review.entity;
 
+import com.popflix.common.entity.BaseSoftDeleteEntity;
 import com.popflix.common.entity.BaseTimeEntity;
 import com.popflix.domain.user.entity.User;
 import jakarta.persistence.*;
@@ -15,7 +16,7 @@ import static jakarta.persistence.GenerationType.*;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Comment extends BaseTimeEntity {
+public class Comment extends BaseSoftDeleteEntity {
     @Id
     @GeneratedValue(strategy = IDENTITY)
     private Long commentId;

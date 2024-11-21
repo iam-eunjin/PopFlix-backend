@@ -1,5 +1,6 @@
 package com.popflix.domain.photoreview.entity;
 
+import com.popflix.common.entity.BaseSoftDeleteEntity;
 import com.popflix.common.entity.BaseTimeEntity;
 import com.popflix.domain.movie.entity.Movie;
 import com.popflix.domain.user.entity.User;
@@ -14,7 +15,7 @@ import java.util.List;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class PhotoReview extends BaseTimeEntity {
+public class PhotoReview extends BaseSoftDeleteEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long reviewId;

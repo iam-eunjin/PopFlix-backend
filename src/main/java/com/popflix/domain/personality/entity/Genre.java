@@ -1,6 +1,7 @@
 package com.popflix.domain.personality.entity;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.popflix.common.entity.BaseTimeEntity;
 import com.popflix.domain.movie.entity.MovieGenre;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -18,7 +19,7 @@ import java.util.List;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 
-public class Genre {
+public class Genre extends BaseTimeEntity {
     @Id
     @JsonProperty("genre_ids")
     private Long id;

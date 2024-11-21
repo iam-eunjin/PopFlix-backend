@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "CommonCode")
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class CommonCode {
+public class CommonCode extends BaseTimeEntity {
     @EmbeddedId
     private CommonCodeId commonCodeId;
 

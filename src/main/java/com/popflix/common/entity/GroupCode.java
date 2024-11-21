@@ -16,7 +16,7 @@ import java.util.List;
 @Table(name = "GroupCode")
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class GroupCode {
+public class GroupCode extends BaseTimeEntity {
     @Id
     @Column(name = "group_code_id", length = 20)
     private String groupCodeId;

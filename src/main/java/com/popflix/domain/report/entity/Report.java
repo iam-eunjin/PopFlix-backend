@@ -1,5 +1,6 @@
 package com.popflix.domain.report.entity;
 
+import com.popflix.common.entity.BaseSoftDeleteEntity;
 import com.popflix.common.entity.BaseTimeEntity;
 import com.popflix.domain.report.enums.ReportTarget;
 import com.popflix.domain.report.enums.ReportStatus;
@@ -14,7 +15,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "Report")
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Report extends BaseTimeEntity {
+public class Report extends BaseSoftDeleteEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "report_id")
