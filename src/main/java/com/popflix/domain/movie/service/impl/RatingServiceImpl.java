@@ -65,8 +65,8 @@ public class RatingServiceImpl implements RatingService {
                 .orElseThrow(() -> new IllegalArgumentException("평점이 존재하지 않습니다."));
 
         // 2. 평점 삭제
-        existingRating.deleteRating(); // 별점 삭제 메서드 호출
-        ratingRepository.delete(existingRating); // 평점 엔티티 삭제
+        existingRating.deleteRating();
+        ratingRepository.save(existingRating);
 
         return "평점이 삭제되었습니다.";
     }
