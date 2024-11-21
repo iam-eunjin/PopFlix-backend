@@ -45,6 +45,6 @@ public class Rating extends BaseSoftDeleteEntity {
     }
 
     public void deleteRating() {
-        this.delete();
+        this.rating = null;
     }
 }

@@ -66,7 +66,7 @@ public class RatingServiceImpl implements RatingService {
 
         // 2. 평점 삭제
         existingRating.deleteRating();
-        ratingRepository.save(existingRating);
+        ratingRepository.delete(existingRating);
 
         return "평점이 삭제되었습니다.";
     }
