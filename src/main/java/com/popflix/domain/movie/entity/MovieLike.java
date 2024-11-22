@@ -19,7 +19,7 @@ public class MovieLike extends BaseTimeEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private boolean isLike;
+    private boolean isLiked;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
@@ -30,8 +30,8 @@ public class MovieLike extends BaseTimeEntity {
     private Movie movie;
 
     @Builder
-    public MovieLike(boolean isLike, User user, Movie movie) {
-        this.isLike = isLike;
+    public MovieLike(boolean isLiked, User user, Movie movie) {
+        this.isLiked = isLiked;
         this.user = user;
         this.movie = movie;
     }
