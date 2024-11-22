@@ -38,4 +38,13 @@ public class Rating extends BaseSoftDeleteEntity {
         this.user = user;
         this.movie = movie;
     }
+
+
+    public void updateRating(Integer score) {
+        this.rating = score;
+    }
+
+    public void deleteRating() {
+        this.rating = null;
+    }
 }
