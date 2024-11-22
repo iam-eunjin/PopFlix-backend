@@ -12,6 +12,8 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/movies")
@@ -59,6 +61,17 @@ public class MovieController {
         boolean isLiked = movieLikeService.likeStatus(userId, movieId);
         String message = isLiked ? "좋아요를 추가했습니다." : "좋아요를 취소했습니다.";
         return ApiUtil.success(message);
+    }
+
+    // 영화 좋아요 상태 조회
+    @GetMapping("/like")
+    public ApiSuccess<?> getLikeStatus(
+            @RequestParam Long movieId,
+            @RequestParam Long userId
+    ){
+        Map<String, Boolean> likeStatus = movieLikeService.checkLikeStatus(movieId, userId);
+
+        return ApiUtil.success(likeStatus);
     }
 
 }

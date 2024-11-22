@@ -13,6 +13,8 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 
 @Service
@@ -41,12 +43,23 @@ public class MovieLikeServiceImpl implements MovieLikeService {
             MovieLike movieLike = MovieLike.builder()
                     .user(user)
                     .movie(movie)
-                    .isLike(true)
+                    .isLiked(true)
                     .build();
 
             movie.addLike();
             movieLikeRepository.save(movieLike);
             return true;
         }
+    }
+
+    @Override
+    public Map<String, Boolean> checkLikeStatus(Long movieId, Long userId) {
+        Map<String, Boolean> likeStatus = new HashMap<>();
+
+        // 좋아요 상태 확인
+        boolean isLiked = movieLikeRepository.existsByMovie_IdAndUser_UserIdAndIsLiked(movieId, userId, true);
+        likeStatus.put("isLiked", isLiked);
+
+        return likeStatus;
     }
 }
