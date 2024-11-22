@@ -14,14 +14,14 @@ public interface RatingRepository extends JpaRepository<Rating, Long> {
     @Query(value = """
     SELECT AVG(r.rating)
       FROM Rating r
-     WHERE r.movie.id = :movieId AND r.isDeleted = false
+     WHERE r.movie.id = :movieId
     """)
     Double findAverageRatingByMovieId(@Param("movieId") Long movieId);
 
     @Query(value = """
     SELECT r
       FROM Rating r
-     WHERE r.movie.id = :movieId AND r.isDeleted = false
+     WHERE r.movie.id = :movieId
     """)
     List<Rating> findAllRatingsByMovieId(@Param("movieId") Long movieId);
 
