@@ -1,7 +1,7 @@
 package com.popflix.domain.movie.entity;
 
 
-import com.popflix.common.entity.BaseSoftDeleteEntity;
+import com.popflix.common.entity.BaseTimeEntity;
 import com.popflix.domain.user.entity.User;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Max;
@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Rating extends BaseSoftDeleteEntity {
+public class Rating extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

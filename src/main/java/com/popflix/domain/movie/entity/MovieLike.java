@@ -1,6 +1,7 @@
 package com.popflix.domain.movie.entity;
 
 import com.popflix.common.entity.BaseSoftDeleteEntity;
+import com.popflix.common.entity.BaseTimeEntity;
 import com.popflix.domain.user.entity.User;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
@@ -12,13 +13,13 @@ import lombok.NoArgsConstructor;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class MovieLike extends BaseSoftDeleteEntity {
+public class MovieLike extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private boolean is_like;
+    private boolean isLike;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
@@ -29,8 +30,8 @@ public class MovieLike extends BaseSoftDeleteEntity {
     private Movie movie;
 
     @Builder
-    public MovieLike(boolean is_like, User user, Movie movie) {
-        this.is_like = is_like;
+    public MovieLike(boolean isLike, User user, Movie movie) {
+        this.isLike = isLike;
         this.user = user;
         this.movie = movie;
     }
