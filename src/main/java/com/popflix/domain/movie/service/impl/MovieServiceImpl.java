@@ -7,7 +7,7 @@ import com.popflix.domain.movie.entity.Rating;
 import com.popflix.domain.movie.repository.MovieRepository;
 import com.popflix.domain.movie.repository.RatingRepository;
 import com.popflix.domain.movie.service.MovieService;
-import com.popflix.global.error.MovieNotFoundException;
+import com.popflix.domain.movie.exception.MovieNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
