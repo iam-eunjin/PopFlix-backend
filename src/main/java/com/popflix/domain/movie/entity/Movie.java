@@ -29,6 +29,8 @@ public class Movie extends BaseTimeEntity {
     @JsonProperty("release_date")
     private LocalDate releaseDate;
 
+    private Long likeCount = 0L;
+
     @OneToMany(mappedBy = "movie", fetch = FetchType.LAZY)
     private List<MovieCast> movieCasts = new ArrayList<>();
 
@@ -54,11 +56,12 @@ public class Movie extends BaseTimeEntity {
     private List<ReviewVideo> reviewVideos = new ArrayList<>();
 
     @Builder
-    public Movie(String title, String overview, String posterPath, LocalDate releaseDate, List<MovieCast> movieCasts, List<MovieDirector> movieDirectors, List<MovieStorage> movieStorages, List<MovieLike> movieLikes, List<MovieGenre> movieGenres, List<Rating> ratings, List<Recommendation> recommendations, List<ReviewVideo> reviewVideos) {
+    public Movie(String title, String overview, String posterPath, LocalDate releaseDate, Long likeCount, List<MovieCast> movieCasts, List<MovieDirector> movieDirectors, List<MovieStorage> movieStorages, List<MovieLike> movieLikes, List<MovieGenre> movieGenres, List<Rating> ratings, List<Recommendation> recommendations, List<ReviewVideo> reviewVideos) {
         this.title = title;
         this.overview = overview;
         this.posterPath = posterPath;
         this.releaseDate = releaseDate;
+        this.likeCount = 0L;
         this.movieCasts = movieCasts;
         this.movieDirectors = movieDirectors;
         this.movieStorages = movieStorages;
@@ -67,6 +70,16 @@ public class Movie extends BaseTimeEntity {
         this.ratings = ratings;
         this.recommendations = recommendations;
         this.reviewVideos = reviewVideos;
+    }
+
+    public void addLike() {
+        this.likeCount++;
+    }
+
+    public void removeLike() {
+        if (this.likeCount > 0) {
+            this.likeCount--;
+        }
     }
 
 }
