@@ -11,12 +11,12 @@ import java.util.List;
 public class GetMovieRatingResponseDto {
     private Long movieId;
     private String title;
-    private Integer averageRating;
+    private Double averageRating;
     private List<GetRatingResponseDto> ratings;
 
 
     @Builder
-    public GetMovieRatingResponseDto(Long movieId, String title, Integer averageRating, List<GetRatingResponseDto> ratings) {
+    public GetMovieRatingResponseDto(Long movieId, String title, Double averageRating, List<GetRatingResponseDto> ratings) {
         this.movieId = movieId;
         this.title = title;
         this.averageRating = averageRating;

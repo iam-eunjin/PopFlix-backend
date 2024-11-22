@@ -30,7 +30,7 @@ public class MovieServiceImpl implements MovieService {
         // 영화의 평점 평균 계산
         Double averageRating = ratingRepository.findAverageRatingByMovieId(movieId);
 
-        int roundedRating = averageRating != null ? (int) Math.ceil(averageRating) : 0;
+        Double roundedRating = averageRating != null ? averageRating : 0.0;
 
         List<Rating> ratings = ratingRepository.findAllRatingsByMovieId(movieId);
 
