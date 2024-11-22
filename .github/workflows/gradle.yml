@@ -20,6 +20,7 @@ jobs:
       uses: actions/setup-java@v4
       with:
         java-version: '17'
+        distribution: 'temurin'
 
     #1. gradlew 실행 권한 설정
     - name: Set execute permissions on gradlew
