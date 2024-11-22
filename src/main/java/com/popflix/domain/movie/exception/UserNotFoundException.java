@@ -1,4 +1,4 @@
-package com.popflix.global.error;
+package com.popflix.domain.movie.exception;
 
 public class UserNotFoundException extends RuntimeException {
     public UserNotFoundException(Long inputId) {

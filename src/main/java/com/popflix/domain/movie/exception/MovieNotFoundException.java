@@ -1,4 +1,4 @@
-package com.popflix.global.error;
+package com.popflix.domain.movie.exception;
 
 public class MovieNotFoundException extends RuntimeException {
     public MovieNotFoundException(Long inputId) {
